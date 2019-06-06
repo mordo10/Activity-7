@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Departure:</strong>
+  <%= @flight.departure %>
+</p>
+
+<p>
+  <strong>Arrival:</strong>
+  <%= @flight.arrival %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @flight.destination %>
+</p>
+
+<p>
+  <strong>Baggage allowance:</strong>
+  <%= @flight.baggage_allowance %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @flight.capacity %>
+</p>
+
+<%= link_to 'Edit', edit_flight_path(@flight) %> |
+<%= link_to 'Back', flights_path %>
+
+
+<%= render "list_seat", seats: @flight.seats %>
+
+<% if @flight.seats.length < @flight.capacity then %>
+	<%= render "new_seat", seat: Seat.new, flight_id: @flight.id %>
+<% else %>
+    FLIGHT IS FULL
+<%end%>
+
+<%= render "seat_class", seat_classes: @flight.seats %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Seat Classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class name</th>
+      <th>Price</th>
+      <th>Food service</th>
+      <th>Seat type</th>
+      <th>Leg room</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seat_classes.each do |seat_class| %>
+      <tr>
+        <td><%= seat_class.class_name %></td>
+        <td><%= seat_class.price %></td>
+        <td><%= seat_class.food_service %></td>
+        <td><%= seat_class.seat_type %></td>
+        <td><%= seat_class.leg_room %></td>
+        <td><%= link_to 'Show', seat_class %></td>
+        <td><%= link_to 'Edit', edit_seat_class_path(seat_class) %></td>
+        <td><%= link_to 'Destroy', seat_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Seat Class', new_seat_class_path %>
